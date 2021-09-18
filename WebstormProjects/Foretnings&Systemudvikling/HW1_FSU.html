@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Pepita the swallow</title>
+
+<head> </head>
+<body>
+<!-- Creating a headline-->
+<h1></h1>
+
+<!-- Creating a table-->
+    <table>
+        <!-- tr = a row tag
+             th = a header tag-->
+        <tr>
+            <th>Seed intake in grams:</th>
+            <th>Distance traveled in km:</th>
+            <th>Joules left:</th>
+        </tr>
+        <tr>
+            <!-- Giving the inputs id's, to be used in the JS code.
+                 Specifying the type as text box, that can be calculated-->
+            <td><input id="Seeds" type="text" oninput="calculate();" /></td>
+            <td><input id="KM" type="text" oninput="calculate();" /></td>
+            <td><input id="Joules" /></td>
+        </tr>
+    </table>
+
+</body>
+<!-- Enabling JS with the script tags-->
+<script>
+
+    //Creating a function to Calculate the birds energy
+    function calculate() {
+
+        //Accessing elements by their ID and getting their values
+        let Seeds = document.getElementById('Seeds').value;
+        let KM = document.getElementById('KM').value;
+        //Calculating the bird's energy
+        let myResult = (Seeds*4) - (KM*2);
+        document.getElementById('Joules').value = myResult;
+    }
+
+</script>
+
+</html>
