@@ -59,24 +59,45 @@ class Mascot {
 
 }
 
-// Creating a new class to control the mood state of the mascot. a super class
+// Creating a new class that should be extended to 3 subclasses below: Bored, Hungry and Happy.
 class MoodState {
+    //The constructor function decides what mood myMascot should have.
     constructor(myMascot) {
         this.myMascot = myMascot
     }
 }
 
+
 // Extending the MoodState class, so this one has the same properties.
 class Bored extends MoodState {
-    //Save the data for the time that the mascot becomes bored.
-    boredTime = new Date()
 
-
+    //Creating a method, that decides what happens to the mascot when it eats in its happy state.
     makeMascotEat(){
+
+        let timer = 10;
+        function startTimer() {
+            let countdownTimer = setInterval(function() {
+
+                console.log(timer);
+                timer = timer - 1;
+                if (timer <= 0) {
+                    clearInterval(countdownTimer);
+                    this.currentState = new Happy (this)
+                    console.log("Now 1 hour has passed and your mascot is now state (Happy)")
+
+                }
+
+            }, 1000);
+        }
+        startTimer();
+
+        //A console log message is send when this method is called in this state.
         console.log("Mascot is Bored and will not eat!!!")
     }
 
+    //Creating a method, that decides what happens to the mascot when it plays in its happy state.
     makeMascotPlay(){
+        //The method makeMascotHappy are called on myMascot
         this.myMascot.makeMascotHappy()
     }
 
@@ -88,11 +109,15 @@ class Bored extends MoodState {
 // Extending the MoodState class, so this one has the same properties.
 class Hungry extends MoodState {
 
+    //Method for making the mascot eat in it's Hungry state.
     makeMascotEat(){
+        //The method makeMascotHappe are called, when my mascot eats in this state.
         this.myMascot.makeMascotHappy()
     }
 
+    //Method for making the mascot play in it's Hungry state.
     makeMascotPlay(){
+        // A messeage is loged to the console when makeMascotPlay is called in this state.
         console.log("Mascot is hungry. Mascot can not play while being hungry")
     }
 
@@ -103,20 +128,27 @@ class Hungry extends MoodState {
 // Extending the MoodState class, so this one has the same properties.
 class Happy extends MoodState {
 
+    //Creating an eat and play counter to ceep track of the times the mascot hat eaten or played in a row.
     eatCount = 0
     playCount = 0
 
+    //Method to make mascot eat.
     makeMascotEat(){
 
+        // When this method is called we increase eatCount by 1
         this.eatCount = this.eatCount + 1;
+        //If the eat count reaches 2, the method makeMascotBored, is called on myMascot.
         if (this.eatCount === 2) {
             this.myMascot.makeMascotBored()
+            //After this that message is called we reset the eatcount to 0 again.
             this.eatCount = 0
+            //If the eatCount has not reached 2 yet, we call the increaseLevelByOne on myMascot
         } else{
             this.myMascot.increaseLevelByOne()
         }
     }
 
+    //This message is made following the same priciple as the one above.
     makeMascotPlay(){
         this.playCount = this.playCount + 1;
         if(this.playCount === 2){
@@ -130,13 +162,13 @@ class Happy extends MoodState {
 
 }
 
-//Test
+
+
+
 let bobo = new Mascot()
 console.log(bobo)
-bobo.play()
 bobo.eat()
-bobo.play()
-bobo.play()
+bobo.eat()
+bobo.eat()
 console.log(bobo)
-bobo.eat()
 console.log(bobo)
