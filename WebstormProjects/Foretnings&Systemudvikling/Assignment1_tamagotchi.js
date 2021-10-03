@@ -1,5 +1,9 @@
 //Creating the class mascot:
+
+
 class Mascot {
+
+
 
     //Defining a count variables to ceep track of A mascot's level:
     level = 0
@@ -46,13 +50,14 @@ class Mascot {
 
     // Eating method
     eat() {
-        //_____________________________________________
+        //Changes the currentState of the mascot
         this.currentState.makeMascotEat()
     }
 
+
     //Playing method
     play() {
-        //______________________________________________
+        //changes the currentState of the mascot
         this.currentState.makeMascotPlay()
 
     }
@@ -73,24 +78,6 @@ class Bored extends MoodState {
 
     //Creating a method, that decides what happens to the mascot when it eats in its happy state.
     makeMascotEat(){
-
-        let timer = 10;
-        function startTimer() {
-            let countdownTimer = setInterval(function() {
-
-                console.log(timer);
-                timer = timer - 1;
-                if (timer <= 0) {
-                    clearInterval(countdownTimer);
-                    this.currentState = new Happy (this)
-                    console.log("Now 1 hour has passed and your mascot is now state (Happy)")
-
-                }
-
-            }, 1000);
-        }
-        startTimer();
-
         //A console log message is send when this method is called in this state.
         console.log("Mascot is Bored and will not eat!!!")
     }
@@ -164,11 +151,16 @@ class Happy extends MoodState {
 
 
 
-
+//Testing my new mascot.
 let bobo = new Mascot()
-console.log(bobo)
+
+bobo.eat()
+bobo.eat()
+bobo.play()
+bobo.play()
+bobo.play()
 bobo.eat()
 bobo.eat()
 bobo.eat()
-console.log(bobo)
+
 console.log(bobo)
