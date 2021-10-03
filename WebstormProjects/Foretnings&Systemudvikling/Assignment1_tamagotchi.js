@@ -12,11 +12,6 @@ class Mascot {
     //The "this" refering to a given mascot, that will be created from this class (i have created bobo).
     currentState = new Happy(this) // Translatede to human language: new currentstate which start by being happy for this mascot i create (bobo)
 
-    //We create the method change for changing the mascots currentState
-    /*change(state) {
-        //The value of currentState is replaced with state.
-        this.currentState = state
-    }*/
 
     //Method to increse level by 1
     increaseLevelByOne(){
